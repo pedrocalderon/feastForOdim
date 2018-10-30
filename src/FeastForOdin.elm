@@ -16,6 +16,16 @@ type Player
     | Black
 
 
+type Borad
+    = Building
+
+
+type BuildingTiles
+    = Shed
+    | StoneHouse
+    | LongHouse
+
+
 type RoundPhase
     = ANewViking
     | Harvers
@@ -40,6 +50,9 @@ type alias Model =
     { game : Game
     , roundPhase : RoundPhase
     , roundCounter : Int
+    , sheds : Int
+    , stoneHouses : Int
+    , longHouses : Int
     }
 
 
@@ -48,6 +61,9 @@ initialModel =
     { game = 0
     , roundPhase = ANewViking
     , roundCounter = 1
+    , sheds = 3
+    , stoneHouses = 3
+    , longHouses = 5
     }
 
 
