@@ -32,6 +32,13 @@ type ShipTiles
     | LongShip
 
 
+type Goods
+    = Wood
+    | Store
+    | Ore
+    | Money
+
+
 type RoundPhase
     = ANewViking
     | Harvers
