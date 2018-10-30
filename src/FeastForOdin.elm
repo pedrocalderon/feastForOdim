@@ -2,6 +2,7 @@ module FeatForOdim exposing (main)
 
 import Html exposing (div, text)
 import Html.Attributes exposing (..)
+import Random
 
 
 type alias Game =
@@ -23,6 +24,21 @@ type Actions
 type alias Model =
     { game : Game
     }
+
+
+diceRoll : Random.Generator Int
+diceRoll max =
+    Random.int 1 max
+
+
+rollEightSidedDie : Random.Generator
+rollEightSidedDie =
+    diceRoll 8
+
+
+rollTwelveSidedDie : Random.Generator
+rollTwelveSidedDie =
+    diceRoll 12
 
 
 view model =
