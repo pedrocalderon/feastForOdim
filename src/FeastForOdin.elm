@@ -26,6 +26,12 @@ type BuildingTiles
     | LongHouse
 
 
+type ShipTiles
+    = WhalingBoat
+    | Knarr
+    | LongShip
+
+
 type RoundPhase
     = ANewViking
     | Harvers
@@ -53,6 +59,9 @@ type alias Model =
     , sheds : Int
     , stoneHouses : Int
     , longHouses : Int
+    , whalingBoats : Int
+    , knarrs : Int
+    , longShips : Int
     }
 
 
@@ -64,6 +73,9 @@ initialModel =
     , sheds = 3
     , stoneHouses = 3
     , longHouses = 5
+    , whalingBoats = 10
+    , knarrs = 12
+    , longShips = 10
     }
 
 
