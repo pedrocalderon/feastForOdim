@@ -1,4 +1,4 @@
-module FeatForOdim exposing (main)
+module FeatForOdin exposing (main)
 
 import Html exposing (div, text)
 import Html.Attributes exposing (..)
@@ -16,13 +16,38 @@ type Player
     | Black
 
 
-type Actions
+type RoundPhase
+    = ANewViking
+    | Harvers
+    | TurnExplorationBords
+    | DrawWeapon
+    | Actions
+    | DetermineStartPlayer
+    | Income
+    | AnimalBreeding
+    | Feast
+    | Bonus
+    | UpdateMontainStrips
+    | RemovePlacedVikings
+
+
+type ActionsList
     = BuildHouses1
     | BuildHouses2
 
 
 type alias Model =
     { game : Game
+    , roundPhase : RoundPhase
+    , roundCounter : Int
+    }
+
+
+initialModel : Model
+initialModel =
+    { game = 0
+    , roundPhase = ANewViking
+    , roundCounter = 1
     }
 
 
