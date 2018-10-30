@@ -52,6 +52,24 @@ type Goods
     | Money
 
 
+type Tiles
+    = AmberFigure
+    | Axe
+    | Belt
+    | BlacksmithsHammer
+    | Crucifix
+    | Cloakpin
+    | DrinkingHorn
+    | EnglishCrown
+    | Fibula
+    | GlassBeads
+    | Goblet
+    | GoldBrooch
+    | Helmet
+    | Horseshoe
+    | RoundShield
+
+
 type RoundPhase
     = ANewViking
     | Harvers
