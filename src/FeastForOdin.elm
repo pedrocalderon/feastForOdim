@@ -26,17 +26,17 @@ type alias Model =
     }
 
 
-diceRoll : Random.Generator Int
+diceRoll : Int -> Random.Generator Int
 diceRoll max =
     Random.int 1 max
 
 
-rollEightSidedDie : Random.Generator
+rollEightSidedDie : Random.Generator Int
 rollEightSidedDie =
     diceRoll 8
 
 
-rollTwelveSidedDie : Random.Generator
+rollTwelveSidedDie : Random.Generator Int
 rollTwelveSidedDie =
     diceRoll 12
 
