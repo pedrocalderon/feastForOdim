@@ -9,17 +9,15 @@ type alias Game =
 
 
 type Player
-    = Player1
-    | Player2
-    | Player3
-    | Player4
-
-
-type Colors
     = Red
     | Blue
     | Green
     | Black
+
+
+type Actions
+    = BuildHouses1
+    | BuildHouses2
 
 
 type alias Model =
