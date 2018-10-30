@@ -17,13 +17,26 @@ type Player
 
 
 type Borad
-    = Building
+    = Main
+    | Building
+    | Exploration
 
 
-type BuildingTiles
+type BuildingBoards
     = Shed
     | StoneHouse
     | LongHouse
+
+
+type ExplorationBoards
+    = Shetland
+    | BearIsland
+    | FaroeIsland
+    | BaffinIsland
+    | Iceland
+    | Labrador
+    | Greenland
+    | Newfoundland
 
 
 type ShipTiles
