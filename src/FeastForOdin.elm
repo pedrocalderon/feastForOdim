@@ -5,15 +5,35 @@ import Html.Attributes exposing (..)
 import Random
 
 
+maxSupply =
+    { bowAndArrows = 12
+    , longSwords = 11
+    , snares = 12
+    , spears = 12
+    , sheds = 3
+    , stoneHouses = 3
+    , longHouses = 5
+    , whalingBoats = 10
+    , knarrs = 12
+    , longShips = 10
+    , vikings = 12
+    }
+
+
 type alias Game =
     Int
 
 
+type GameType
+    = Long
+    | Short
+
+
 type Player
-    = Red
+    = Black
     | Blue
     | Green
-    | Black
+    | Red
 
 
 type Borad
@@ -39,7 +59,7 @@ type ExplorationBoards
     | Newfoundland
 
 
-type ShipTiles
+type ShipTile
     = WhalingBoat
     | Knarr
     | LongShip
@@ -49,10 +69,13 @@ type Goods
     = Wood
     | Store
     | Ore
-    | Money
 
 
-type SpecialTiles
+type alias MountaiStrip =
+    List Goods
+
+
+type SpecialTile
     = AmberFigure
     | Axe
     | Belt
@@ -70,7 +93,7 @@ type SpecialTiles
     | RoundShield
 
 
-type FoodOrangeTiles
+type OrangeFoodTile
     = Peas
     | Flax
     | Beans
@@ -79,7 +102,7 @@ type FoodOrangeTiles
     | Fuits
 
 
-type FoodRedTiles
+type RedFoodTile
     = Mead
     | Stockfish
     | Milk
@@ -87,14 +110,14 @@ type FoodRedTiles
     | WhaleMeat
 
 
-type AnimalRedTiles
+type AnimalTile
     = Cattle
     | CattlePregnant
     | Sheep
     | SheepPregnant
 
 
-type EquipmentGreenTiles
+type GreenEquipmentTile
     = Oil
     | Hide
     | Wool
@@ -105,7 +128,7 @@ type EquipmentGreenTiles
     | Clothing
 
 
-type EquipmentBlueTiles
+type BlueEquipmentTile
     = RuneStone
     | Silverware
     | Chest
@@ -113,6 +136,17 @@ type EquipmentBlueTiles
     | Spices
     | Jewelry
     | SilverHoard
+
+
+type WeaponCard
+    = BowAndArrow
+    | LongSword
+    | Snare
+    | Spear
+
+
+type OcupationalCard
+    = TodoAddCards
 
 
 type RoundPhase
@@ -135,30 +169,71 @@ type ActionsList
     | BuildHouses2
 
 
+type alias PlayerHand =
+    { money : Int
+    , weapons : List WeaponCard
+    , occupations : List OcupationalCard
+    , specialTiles : List SpecialTile
+    , orangeFoodTiles : List OrangeFoodTile
+    , redFoodTiles : List RedFoodTile
+    , greenEquipmentTiles : List GreenEquipmentTile
+    , blueEquipmentTiles : List BlueEquipmentTile
+    , vikings : Int
+    }
+
+
+gameLength : GameType -> Int
+gameLength gameType =
+    case gameType of
+        Long ->
+            7
+
+        Short ->
+            6
+
+
+initialPlayerHand : GameType -> PlayerHand
+initialPlayerHand gameType =
+    let
+        vikings =
+            maxSupply.vikings - gameLength gameType
+    in
+    { money = 10
+    , weapons = [ BowAndArrow, Snare, Spear ]
+    , occupations = []
+    , specialTiles = []
+    , orangeFoodTiles = []
+    , redFoodTiles = [ Mead ]
+    , greenEquipmentTiles = []
+    , blueEquipmentTiles = []
+    , vikings = vikings
+    }
+
+
 type alias Model =
     { game : Game
+    , gameType : GameType
     , roundPhase : RoundPhase
     , roundCounter : Int
-    , sheds : Int
-    , stoneHouses : Int
-    , longHouses : Int
-    , whalingBoats : Int
-    , knarrs : Int
-    , longShips : Int
+    , currentPlayer : Player
+    , blackPlayerHand : PlayerHand
+    , bluePlayerHand : PlayerHand
+    , greenPlayerHand : PlayerHand
+    , redPlayerHand : PlayerHand
     }
 
 
 initialModel : Model
 initialModel =
     { game = 0
+    , gameType = Short
     , roundPhase = ANewViking
     , roundCounter = 1
-    , sheds = 3
-    , stoneHouses = 3
-    , longHouses = 5
-    , whalingBoats = 10
-    , knarrs = 12
-    , longShips = 10
+    , currentPlayer = Black
+    , blackPlayerHand = initialPlayerHand Short
+    , bluePlayerHand = initialPlayerHand Short
+    , greenPlayerHand = initialPlayerHand Short
+    , redPlayerHand = initialPlayerHand Short
     }
 
 
