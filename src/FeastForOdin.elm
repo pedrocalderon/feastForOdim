@@ -52,7 +52,7 @@ type Goods
     | Money
 
 
-type Tiles
+type SpecialTiles
     = AmberFigure
     | Axe
     | Belt
@@ -68,6 +68,51 @@ type Tiles
     | Helmet
     | Horseshoe
     | RoundShield
+
+
+type FoodOrangeTiles
+    = Peas
+    | Flax
+    | Beans
+    | Grain
+    | Cabbage
+    | Fuits
+
+
+type FoodRedTiles
+    = Mead
+    | Stockfish
+    | Milk
+    | SaltMeat
+    | WhaleMeat
+
+
+type AnimalRedTiles
+    = Cattle
+    | CattlePregnant
+    | Sheep
+    | SheepPregnant
+
+
+type EquipmentGreenTiles
+    = Oil
+    | Hide
+    | Wool
+    | Linen
+    | SkinAndBones
+    | Fur
+    | Robe
+    | Clothing
+
+
+type EquipmentBlueTiles
+    = RuneStone
+    | Silverware
+    | Chest
+    | Silk
+    | Spices
+    | Jewelry
+    | SilverHoard
 
 
 type RoundPhase
